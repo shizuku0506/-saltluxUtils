@@ -16,9 +16,8 @@ public class CompressUtils
 
 	private final String extensionTAR = "tar";
 
-	private final String extensionBZIP = "bz2"; // .tar.bz2
-
-	private final String extensionGZIP = "gz"; // .tar.gz
+	// private final String extensionBZIP = "bz2"; // .tar.bz2
+	// private final String extensionGZIP = "gz"; // .tar.gz
 
 	private final String extensionSEVENZIP = "7z";
 
@@ -52,11 +51,16 @@ public class CompressUtils
 		{
 			destFile.mkdir();
 		}
+
+		if (validateDuplicationPath(destFile, srcFile) == false)
+		{
+			return;
+		}
+
 		try
 		{
 			if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()), extensionZIP))
 			{
-
 				unCompressor.unCompressZIP(srcFile, destFile, encoding);
 			} else if (StringUtils
 							.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()), extensionTAR))
@@ -66,17 +70,7 @@ public class CompressUtils
 							extensionSEVENZIP))
 			{
 				unCompressor.unCompressSEVENZIP(srcFile, destFile, encoding);
-			} else if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()),
-							extensionBZIP))
-			{
-				// TODO
-				unCompressor.unCompressBZIP(srcFile, destFile, encoding);
-			} else if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()),
-							extensionGZIP))
-			{
-				unCompressor.unCompressGZIP(srcFile, destFile, encoding);
 			}
-
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -109,20 +103,8 @@ public class CompressUtils
 			return;
 		}
 
-		try
+		if (validateDuplicationPath(srcFile, destFile) == false)
 		{
-			// 압축대상 패스에 압축파일이 존재하면, 무한루프 돌아버림
-			if (StringUtils.startsWithIgnoreCase(destFile.getCanonicalPath(), srcFile.getCanonicalPath()) == true)
-			{
-				System.out.println("Duplicated srcFile Path !!!");
-				System.out.println("srcFile CanonicalPath : " + srcFile.getCanonicalPath());
-				System.out.println("destFile CanonicalPath : " + destFile.getCanonicalPath());
-				return;
-			}
-		} catch (IOException e)
-		{
-			System.out.println("Error get CanonicalPath !!! ");
-			e.printStackTrace();
 			return;
 		}
 
@@ -136,6 +118,34 @@ public class CompressUtils
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * @param srcFile
+	 * @param destFile
+	 * @return path의 중복성 검정
+	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @since 2014. 5. 20.
+	 */
+	private boolean validateDuplicationPath(File srcFile, File destFile)
+	{
+		try
+		{
+			// 압축대상 패스에 압축파일이 존재하면, 무한루프 돌아버림
+			if (StringUtils.startsWithIgnoreCase(destFile.getCanonicalPath(), srcFile.getCanonicalPath()) == true)
+			{
+				System.out.println("Duplicated srcFile Path !!!");
+				System.out.println("srcFile CanonicalPath : " + srcFile.getCanonicalPath());
+				System.out.println("destFile CanonicalPath : " + destFile.getCanonicalPath());
+				return true;
+			}
+		} catch (IOException e)
+		{
+			System.out.println("Error get CanonicalPath !!! ");
+			e.printStackTrace();
+			return false;
+		}
+		return false;
 	}
 
 }

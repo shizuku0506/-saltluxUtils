@@ -158,63 +158,22 @@ public class UnCompressor
 		SevenZFile sevenZFile = new SevenZFile(srcFile);
 		SevenZArchiveEntry sevenZAe = sevenZFile.getNextEntry();
 
-		int nWritten = 0;
-		byte[] buf = new byte[(int) sevenZAe.getSize()];
-		
-		
-
-		// Entry 하나씩 처리한다. while
-//		while ((sevenZAe = sevenZFile.getNextEntry()) != null)
-//		{
-//			File target = null;
-//			target = new File(destFile, sevenZAe.getName());
-//			if (sevenZAe.isDirectory()) // 디렉토리
-//			{
-//				target.mkdirs();
-//			} else
-//			{ // 파일
-//				File f = new File(target.getParent());
-//				if (f.exists() == false)
-//				{
-//					f.mkdir();
-//				}
-//				target.createNewFile();
-//				BufferedOutputStream bos = null;
-//				try
-//				{
-//					bos = new BufferedOutputStream(new FileOutputStream(target));
-//
-//					while ((nWritten = (int) sevenZAe.getSize()) >= 0)
-//					{
-//						System.out.println(nWritten);
-////						bos.write(buf, 0, nWritten);
-//					}
-//				} finally
-//				{
-//					if (bos != null)
-//					{
-//						bos.close();
-//					}
-//				}
-//			}
-//		}
+		while (sevenZAe != null)
+		{
+			FileOutputStream fos = new FileOutputStream(new File(destFile, sevenZAe.getName()));
+			byte[] buf = new byte[(int) sevenZAe.getSize()];
+			sevenZFile.read(buf, 0, buf.length);
+			fos.write(buf);
+			if (fos != null)
+			{
+				fos.close();
+			}
+			sevenZAe = sevenZFile.getNextEntry();
+		}
 
 		if (sevenZFile != null)
 		{
 			sevenZFile.close();
 		}
-
 	}
-
-	public void unCompressBZIP(File srcFile, File destFile, String encoding) throws Exception
-	{
-		// TODO Auto-generated method stub
-	}
-
-	public void unCompressGZIP(File srcFile, File destFile, String encoding)
-	{
-		// TODO Auto-generated method stub
-
-	}
-
 }

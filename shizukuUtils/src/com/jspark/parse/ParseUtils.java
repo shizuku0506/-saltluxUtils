@@ -34,7 +34,7 @@ public class ParseUtils
 			InputStream is = new FileInputStream(jspFile);
 			InputStreamReader isr = new InputStreamReader(is, "UTF-8");
 
-			Reader in = new BufferedReader(isr);
+			Reader in =  new BufferedReader(isr);
 			StringBuffer tempSb = new StringBuffer();
 
 			int ch;

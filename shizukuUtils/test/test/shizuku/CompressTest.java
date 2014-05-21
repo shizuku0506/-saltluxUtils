@@ -2,7 +2,6 @@ package test.shizuku;
 
 import java.io.File;
 
-import org.apache.commons.lang.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,9 +31,9 @@ public class CompressTest
 	{
 		CompressUtils compressUtils = new CompressUtils();
 
-//		 compressUtils.Compress(srcFile, destFile, encoding, includeSrc);
-		
-		srcFile=  new File("d:\\test1\\test1.7z");
+		// compressUtils.Compress(srcFile, destFile, encoding, includeSrc);
+
+		srcFile = new File("d:\\test1\\test1.7z");
 		destFile = new File("d:\\test1\\a");
 		compressUtils.unCompress(srcFile, destFile, encoding);
 

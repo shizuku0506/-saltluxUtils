@@ -6,16 +6,6 @@
 	<classpathentry kind="lib" path="lib/apache/commons-io-2.2.jar"/>
 	<classpathentry kind="lib" path="lib/apache/commons-lang-2.6.jar"/>
 	<classpathentry kind="lib" path="lib/jsoup/jsoup-1.7.2.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2cameoapi.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2dicsearcher.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2docfilter30.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2dorproxy.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2dorserver.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2serveragent.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2serveragentapi.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2socketapi.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2tmsapi.jar"/>
-	<classpathentry kind="lib" path="lib/dor46/in2trendserver.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
