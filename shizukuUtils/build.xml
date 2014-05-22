@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="shizukuUtils" default="compile" basedir=".">
+	<property name="lib.dir" value="${basedir}/lib" />
+
+	<!--
+		클래스 패스
+	-->
+	<path id="project.class.path">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+			<include name="jsoup/*.jar" />
+			<include name="apache/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${basedir}/bin" />
+	</target>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="${basedir}/bin" />
+		<javac srcdir="${basedir}/src/com/jspark" destdir="${basedir}/bin" optimize="on" debug="on" failonerror="false" includeantruntime="false" encoding="utf-8" source="1.6" target="1.6">
+			<classpath refid="project.class.path" />
+		</javac>
+	</target>
+
+	<target name="Make_shizuku0506.jar" depends="compile">
+		<jar jarfile="${basedir}/lib/shizuku0506.jar" basedir="${basedir}/bin" />
+	</target>
+</project>
