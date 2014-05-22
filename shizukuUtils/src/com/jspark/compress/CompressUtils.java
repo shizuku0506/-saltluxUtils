@@ -52,7 +52,7 @@ public class CompressUtils
 			destFile.mkdir();
 		}
 
-		if (validateDuplicationPath(destFile, srcFile) == false)
+		if (validateDuplicationPath(destFile, srcFile) == true)
 		{
 			return;
 		}
@@ -102,22 +102,32 @@ public class CompressUtils
 			System.out.println("DestFile is Directory !!!");
 			return;
 		}
-
-		if (validateDuplicationPath(srcFile, destFile) == false)
+		if (validateDuplicationPath(srcFile, destFile) == true)
 		{
 			return;
 		}
 
-		if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(destFile.getAbsolutePath()), extensionZIP))
+		try
 		{
-			try
+			if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(destFile.getAbsolutePath()), extensionZIP))
 			{
 				compressor.compressZIP(srcFile, destFile, encoding, includeSrc);
-			} catch (Exception e)
+			} else if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(destFile.getAbsolutePath()),
+							extensionTAR))
 			{
-				e.printStackTrace();
+				// TODO
+				compressor.compressTAR(srcFile, destFile, encoding, includeSrc);
+			} else if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(destFile.getAbsolutePath()),
+							extensionSEVENZIP))
+			{
+				// TODO
+				compressor.compressSEVENZIP(srcFile, destFile, encoding, includeSrc);
 			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
 		}
+
 	}
 
 	/**

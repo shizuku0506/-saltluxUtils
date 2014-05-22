@@ -2,8 +2,13 @@ package com.jspark.compress;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Stack;
 
+import org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntry;
+import org.apache.commons.compress.archivers.sevenz.SevenZOutputFile;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 
@@ -100,10 +105,152 @@ public class Compressor
 				zipAos.closeArchiveEntry();
 			}
 		}
-		
+
 		if (zipAos != null)
 		{
 			zipAos.close();
+		}
+	}
+
+	public void compressTAR(File srcFile, File destFile, String encoding, boolean includeSrc) throws Exception
+	{
+		TarArchiveOutputStream tarAos = null;
+		TarArchiveEntry tarAe = null;
+		FileInputStream fis = null;
+		File root = null;
+		byte[] buf = new byte[BUF_SIZE];
+
+		String name;
+		int length;
+
+		tarAos = new TarArchiveOutputStream(new FileOutputStream(destFile), encoding);
+
+		Stack<File> stack = new Stack<File>();
+
+		if (srcFile.isDirectory())
+		{
+			if (includeSrc)
+			{
+				stack.push(srcFile);
+				root = srcFile.getParentFile();
+			} else
+			{
+				File[] fs = srcFile.listFiles();
+				for (int i = 0; i < fs.length; i++)
+				{
+					stack.push(fs[i]);
+				}
+				root = srcFile;
+			}
+		} else
+		{
+			stack.push(srcFile);
+			root = srcFile.getParentFile();
+		}
+
+		while (!stack.isEmpty())
+		{
+			File f = stack.pop();
+			name = toPath(root, f);
+			if (f.isDirectory())
+			{
+				File[] fs = f.listFiles();
+				for (int i = 0; i < fs.length; i++)
+				{
+					if (fs[i].isDirectory())
+						stack.push(fs[i]);
+					else
+						stack.add(0, fs[i]);
+				}
+			} else
+			{
+				tarAe = new TarArchiveEntry(name);
+				tarAos.putArchiveEntry(tarAe);
+				fis = new FileInputStream(f);
+				while ((length = fis.read(buf, 0, buf.length)) >= 0)
+				{
+					tarAos.write(buf, 0, length);
+				}
+				fis.close();
+				tarAos.closeArchiveEntry();
+			}
+		}
+
+		if (tarAos != null)
+		{
+			tarAos.close();
+		}
+	}
+
+	public void compressSEVENZIP(File srcFile, File destFile, String encoding, boolean includeSrc) throws Exception
+	{
+		SevenZOutputFile sevenZoptFile = null;
+		SevenZArchiveEntry sevenZAe = null;
+		FileInputStream fis = null;
+		File root = null;
+		byte[] buf = new byte[BUF_SIZE];
+
+		String name;
+		int length;
+
+		sevenZoptFile = new SevenZOutputFile(destFile);
+
+		Stack<File> stack = new Stack<File>();
+
+		if (srcFile.isDirectory())
+		{
+			if (includeSrc)
+			{
+				stack.push(srcFile);
+				root = srcFile.getParentFile();
+			} else
+			{
+				File[] fs = srcFile.listFiles();
+				for (int i = 0; i < fs.length; i++)
+				{
+					stack.push(fs[i]);
+				}
+				root = srcFile;
+			}
+		} else
+		{
+			stack.push(srcFile);
+			root = srcFile.getParentFile();
+		}
+
+		while (!stack.isEmpty())
+		{
+			File f = stack.pop();
+			name = toPath(root, f);
+
+			if (f.isDirectory())
+			{
+				File[] fs = f.listFiles();
+				for (int i = 0; i < fs.length; i++)
+				{
+					if (fs[i].isDirectory())
+						stack.push(fs[i]);
+					else
+						stack.add(0, fs[i]);
+				}
+			} else
+			{
+				sevenZAe = sevenZoptFile.createArchiveEntry(f, name);
+				sevenZoptFile.putArchiveEntry(sevenZAe);
+
+				fis = new FileInputStream(f);
+				while ((length = fis.read(buf, 0, buf.length)) >= 0)
+				{
+					sevenZoptFile.write(buf, 0, length);
+				}
+				fis.close();
+				sevenZoptFile.closeArchiveEntry();
+			}
+		}
+
+		if (sevenZoptFile != null)
+		{
+			sevenZoptFile.close();
 		}
 	}
 

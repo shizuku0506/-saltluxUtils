@@ -6,6 +6,7 @@
 	<classpathentry kind="lib" path="lib/apache/commons-io-2.2.jar"/>
 	<classpathentry kind="lib" path="lib/apache/commons-lang-2.6.jar"/>
 	<classpathentry kind="lib" path="lib/jsoup/jsoup-1.7.2.jar"/>
+	<classpathentry kind="lib" path="lib/apache/commons-compress-1.8.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

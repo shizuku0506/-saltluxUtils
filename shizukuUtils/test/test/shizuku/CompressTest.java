@@ -33,9 +33,13 @@ public class CompressTest
 
 		// compressUtils.Compress(srcFile, destFile, encoding, includeSrc);
 
-		srcFile = new File("d:\\test1\\test1.7z");
-		destFile = new File("d:\\test1\\a");
-		compressUtils.unCompress(srcFile, destFile, encoding);
+//		srcFile = new File("d:\\test1\\test1.7z");
+//		destFile = new File("d:\\test1\\a");
+//		compressUtils.unCompress(srcFile, destFile, encoding);
+		
+		srcFile = new File("d:\\test1\\a");
+		destFile = new File("d:\\test\\ccc\\c.7z");
+		compressUtils.Compress(srcFile, destFile, "UTF-8", includeSrc);
 
 	}
 
