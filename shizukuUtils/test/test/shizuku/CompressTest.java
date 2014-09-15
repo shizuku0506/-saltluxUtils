@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.jspark.compress.CompressUtils;
+import com.shizuku.compress.CompressUtils;
 
 public class CompressTest
 {

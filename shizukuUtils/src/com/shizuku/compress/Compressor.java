@@ -1,4 +1,4 @@
-package com.jspark.compress;
+package com.shizuku.compress;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,7 +39,7 @@ public class Compressor
 	 *            부모디렉토리의 압축 여부
 	 * @throws Exception
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 5. 20.
 	 */
 	public void compressZIP(File srcFile, File destFile, String encoding, boolean includeSrc) throws Exception

@@ -1,11 +1,11 @@
-package com.jspark.dor.vo;
+package com.shizuku.dor.vo;
 
 import org.apache.commons.lang.StringUtils;
 
 /**
  * 첨부파일 정보를 담는 VO
  *
- * @author 박정선 e-mail: jspark@saltlux.com
+ * @author 박정선 e-mail: souler2585@gmail.com
  * @since 2014. 5. 19.
  */
 public class FileInfoVO

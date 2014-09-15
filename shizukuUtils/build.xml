@@ -19,7 +19,7 @@
 
 	<target name="compile" depends="clean">
 		<mkdir dir="${basedir}/bin" />
-		<javac srcdir="${basedir}/src/com/jspark" destdir="${basedir}/bin" optimize="on" debug="on" failonerror="false" includeantruntime="false" encoding="utf-8" source="1.6" target="1.6">
+		<javac srcdir="${basedir}/src/com/shizuku" destdir="${basedir}/bin" optimize="on" debug="on" failonerror="false" includeantruntime="false" encoding="utf-8" source="1.6" target="1.6">
 			<classpath refid="project.class.path" />
 		</javac>
 	</target>

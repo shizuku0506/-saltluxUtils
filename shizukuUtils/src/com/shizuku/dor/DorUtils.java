@@ -1,7 +1,7 @@
 /*
  * 라이센스 위치
  */
-package com.jspark.dor;
+package com.shizuku.dor;
 
 import java.io.File;
 import java.net.URL;
@@ -16,14 +16,14 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 
-import com.jspark.dor.vo.FileInfoVO;
-import com.jspark.dor.vo.FileSqlVO;
+import com.shizuku.dor.vo.FileInfoVO;
+import com.shizuku.dor.vo.FileSqlVO;
 
 /**
  * DorUtils 설명<br/>
  * 솔트룩스 API에 관한 유틸
  * 
- * @author 박정선 e-mail: jspark@saltlux.com
+ * @author 박정선 e-mail: souler2585@gmail.com
  * @since 2014. 5. 19.
  */
 public class DorUtils
@@ -31,7 +31,7 @@ public class DorUtils
 	/**
 	 * 첨부파일정보를 FileInfoVO리스트에 담아서 리턴
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 5. 19.
 	 */
 	public List<FileInfoVO> getFileInfoList(Connection con, FileSqlVO sqlVO)

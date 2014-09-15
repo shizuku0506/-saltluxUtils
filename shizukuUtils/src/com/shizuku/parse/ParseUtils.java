@@ -1,4 +1,4 @@
-package com.jspark.parse;
+package com.shizuku.parse;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,7 +14,7 @@ import org.jsoup.nodes.Document;
 /**
  * 파싱하는 유틸 모음
  * 
- * @author 박정선 e-mail: jspark@saltlux.com
+ * @author 박정선 e-mail: souler2585@gmail.com
  * @since 2014. 5. 14.
  */
 public class ParseUtils
@@ -22,7 +22,7 @@ public class ParseUtils
 	/**
 	 * jsp 파싱하는 메소드
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 5. 16.
 	 */
 	public String getJspText(File jspFile)
@@ -58,7 +58,7 @@ public class ParseUtils
 	/**
 	 * jsp 파싱하는 메소드
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 5. 14.
 	 */
 	public String getJspText(String jspContent)
@@ -115,7 +115,7 @@ public class ParseUtils
 	/**
 	 * html 파싱하는 메소드
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 5. 14.
 	 */
 	public String getHtmlText(String htmlContent)

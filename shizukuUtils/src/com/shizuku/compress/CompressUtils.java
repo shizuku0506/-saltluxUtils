@@ -1,4 +1,4 @@
-package com.jspark.compress;
+package com.shizuku.compress;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +42,7 @@ public class CompressUtils
 	 * @param encoding
 	 *            인코딩
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 5. 20.
 	 */
 	public void unCompress(File srcFile, File destFile, String encoding)
@@ -87,7 +87,7 @@ public class CompressUtils
 	 * @param includeSrc
 	 *            부모디렉토리의 압축 여부
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 5. 20.
 	 */
 	public void Compress(File srcFile, File destFile, String encoding, boolean includeSrc)
@@ -134,7 +134,7 @@ public class CompressUtils
 	 * @param srcFile
 	 * @param destFile
 	 * @return path의 중복성 검정
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 5. 20.
 	 */
 	private boolean validateDuplicationPath(File srcFile, File destFile)

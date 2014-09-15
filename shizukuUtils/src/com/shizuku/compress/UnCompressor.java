@@ -1,4 +1,4 @@
-package com.jspark.compress;
+package com.shizuku.compress;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -25,7 +25,7 @@ public class UnCompressor
 	 * @param encoding
 	 *            인코딩
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @throws Exception
 	 * @since 2014. 5. 20.
 	 */
@@ -87,7 +87,7 @@ public class UnCompressor
 	 * @param encoding
 	 *            인코딩
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @throws Exception
 	 * @since 2014. 5. 20.
 	 */
@@ -149,7 +149,7 @@ public class UnCompressor
 	 * @param encoding
 	 *            인코딩
 	 * 
-	 * @author 박정선 e-mail: jspark@saltlux.com
+	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @throws Exception
 	 * @since 2014. 5. 20.
 	 */
