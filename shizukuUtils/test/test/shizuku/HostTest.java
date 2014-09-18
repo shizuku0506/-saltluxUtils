@@ -19,9 +19,17 @@ public class HostTest
 
 	private String port = StringUtils.EMPTY;
 
+	public static void main(String[] args)
+	{
+		HostTest t = new HostTest();
+		t.test();
+	}
+
 	@Before
 	public void setUp() throws Exception
 	{
+		hostName = "127.0.0.1";
+		hostName = "localhost";
 		hostName = "www.google.co.kr";
 	}
 
@@ -29,24 +37,42 @@ public class HostTest
 	public void test()
 	{
 		boolean isSuccess = false;
-		long startTime = 0L;
+
+		int callTime = 500;
+
+		System.out.println("This ping Test.... > Target : [ " + hostName + " ]");
+
 		try
 		{
 			InetAddress inet = InetAddress.getByName(hostName);
-			isSuccess = inet.isReachable(100);
 
-			startTime = startTime + 100;
-
-			while (isSuccess == true)
+			do
 			{
-				System.out.println(startTime);
-			}
+				System.out.println("Current Timeout Value : " + callTime / 1000D + " sencond");
+				isSuccess = inet.isReachable(callTime);
+				callTime = callTime + 100;
+
+				if (callTime > 5000)
+				{
+					System.out.println("Call Timeout Out of Range [MAX : 5 second] .... bye !!");
+					break;
+				}
+			} while (isSuccess == false);
 		} catch (UnknownHostException e)
 		{
 			e.printStackTrace();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
+		} finally
+		{
+			if (isSuccess == true)
+			{
+				System.out.println("ping success !! ");
+			} else
+			{
+				System.out.println("ping failed !! ");
+			}
 		}
 	}
 
