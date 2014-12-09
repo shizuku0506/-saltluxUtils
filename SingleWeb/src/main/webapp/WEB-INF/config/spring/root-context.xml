@@ -7,7 +7,23 @@
 	
 	<!-- Oracle Jdbc Driver -->
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/singleDB"/>
+		<property name="jndiName" value="java:/comp/env/jdbc/singleDB"/>
+	</bean>
+	
+	<!-- Session factory setting -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/sqlMapper/mybatis-config.xml"/>
+	</bean>
+	
+	<!-- TransactionManager setting -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- sqlSession setting -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>
 	</bean>
 	
 </beans>
