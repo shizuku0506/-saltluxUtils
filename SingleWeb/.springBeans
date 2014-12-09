@@ -7,9 +7,11 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+		<config>src/main/resources/sqlMapper/mybatis-config.xml</config>
 	</configs>
 	<autoconfigs>
-		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
+		<config>src/main/webapp/WEB-INF/config/spring/root-context.xml</config>
+		<config>src/main/webapp/WEB-INF/config/spring/servlet/servlet-context.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
