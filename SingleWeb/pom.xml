@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.pe</groupId>
 	<artifactId>testWeb</artifactId>
@@ -10,9 +10,17 @@
 	
 	<properties>
 		<java-version>1.7</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<org.springframework-version>3.2.7.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.7.2</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		
+		<commons-io-version>2.4</commons-io-version>
+		<commons-lang-version>2.6</commons-lang-version>
+		<com.oracle-version>11.2.0.1.0</com.oracle-version>
+		<org.mybatis-version>3.2.8</org.mybatis-version>
+		<org.mybatis-spring-version>1.2.2</org.mybatis-spring-version>
+		<org.apache.tomcat-version>8.0.15</org.apache.tomcat-version>
+		<org.apache.tiles-version>3.0.5</org.apache.tiles-version>
 		
 		<!-- build encoding to UTF-8 setting -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -134,21 +142,56 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
+			<version>${commons-io-version}</version>
 		</dependency>
 		
 		<!-- commons-lang -->
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
+			<version>${commons-lang-version}</version>
 		</dependency>
 		
 		<!-- Oracle JDBC Driver -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.1.0</version>
+			<version>${com.oracle-version}</version>
+		</dependency>
+		
+		<!-- Spring JDBC Driver -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${org.mybatis-version}</version>
+		</dependency>
+		
+		<!-- mybatis-spring -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${org.mybatis-spring-version}</version>
+		</dependency>
+		
+		<!-- Tomcat-jdbc -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>${org.apache.tomcat-version}</version>
+		</dependency>
+		
+		<!-- Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>${org.apache.tiles-version}</version>
 		</dependency>
 		
 	</dependencies>
