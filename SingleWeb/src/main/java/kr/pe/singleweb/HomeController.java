@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController
 {
 	/**
-	 * logger 설명 및 파라미터 설명
+	 * logger : logger instance generation.
 	 */
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	/**
-	 * @param locale
-	 * @param model
+	 * @param locale : 지역화 지정 변수
+	 * @param model : 
 	 * @return
 	 *
 	 * @author 강인웅 e-mail: woong8609@nate.com
@@ -34,14 +34,15 @@ public class HomeController
 	public String home(Locale locale, Model model)
 	{
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+
 		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		return "index";
+
+		model.addAttribute("serverTime", formattedDate);
+		// return "index";
+		return "index.tiles";
 	}
-	
+
 }
