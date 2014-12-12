@@ -3,14 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.pe</groupId>
-	<artifactId>testWeb</artifactId>
-	<name>TestWeb</name>
+	<name>singleweb</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	
 	<properties>
 		<java-version>1.7</java-version>
-		<org.springframework-version>3.2.0.RELEASE</org.springframework-version>
+		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		
@@ -19,8 +18,12 @@
 		<com.oracle-version>11.2.0.1.0</com.oracle-version>
 		<org.mybatis-version>3.2.8</org.mybatis-version>
 		<org.mybatis-spring-version>1.2.2</org.mybatis-spring-version>
+		<!-- 
 		<org.apache.tomcat-version>8.0.15</org.apache.tomcat-version>
+		 -->
+		 <org.apache.tomcat-version>7.0.57</org.apache.tomcat-version>
 		<org.apache.tiles-version>2.2.2</org.apache.tiles-version>
+		<org.codehaus.jackson-version>1.9.13</org.codehaus.jackson-version>
 		
 		<!-- build encoding to UTF-8 setting -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -206,6 +209,13 @@
 			<version>${org.apache.tiles-version}</version>
 		</dependency>
 		
+		<!-- jackson -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${org.codehaus.jackson-version}</version>
+		</dependency>
+		
 	</dependencies>
     
     <build>
@@ -229,8 +239,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
@@ -246,4 +256,5 @@
             </plugin>
         </plugins>
     </build>
+    <artifactId>singleweb</artifactId>
 </project>
