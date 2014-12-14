@@ -1,1 +1,1 @@
-<h2>SingleWeb Homepage.</h2>
+<h2><a href="/index.do" style="text-decoration: none;">SingleWeb Homepage.</a></h2>

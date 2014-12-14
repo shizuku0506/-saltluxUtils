@@ -2,8 +2,11 @@
 	<a href="/intro/index.do">Intro</a>
 </p>
 <p>
-	<a href="#">Common</a>
+	<a href="#">Image BBS</a>
 </p>
 <p>
-	<a href="#">Image BBS</a>
+	<a href="#">Guest Book</a>
+</p>
+<p>
+	<a href="#">Contact Us</a>
 </p>

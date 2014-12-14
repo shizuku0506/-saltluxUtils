@@ -1,3 +1,3 @@
 <center>
-	<b>Copyright(c)2014.  SingleWeb  All rights reserved.</b>
+	<Strong>Copyright(c)2014.  SingleWeb  All rights reserved.</Strong>
 </center>
