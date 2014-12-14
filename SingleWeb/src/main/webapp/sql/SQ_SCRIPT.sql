@@ -1,0 +1,15 @@
+/*
+ * SEQUENCE SCRIPT
+ * 
+ * 생성 : SQ_ 테이블네임 _01
+ * 
+ */
+
+/* 유저 시퀀스 생성 */
+CREATE SEQUENCE  SQ_USER_01
+	INCREMENT BY 1
+	START WITH 1
+	NOMAXVALUE
+	MINVALUE 1
+	NOCYCLE
+	CACHE 500 NOORDER;
