@@ -1,5 +1,5 @@
 <p>
-	<a href="#">Intro</a>
+	<a href="/intro/index.do">Intro</a>
 </p>
 <p>
 	<a href="#">Common</a>

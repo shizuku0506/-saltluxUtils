@@ -5,39 +5,34 @@
 
 <tiles-definitions>
 	<!-- tiles apply -->
-	<definition name="default" template="/WEB-INF/template/default.jsp">
-		<put-attribute name="header" value="/WEB-INF/template/default/header.jsp"/>		
-		<put-attribute name="menu" value="/WEB-INF/template/default/menu.jsp"/>		
-		<put-attribute name="footer" value="/WEB-INF/template/default/footer.jsp"/>		
+	<definition name="default" template="/WEB-INF/views/template/default.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/template/default/header.jsp"/>		
+		<put-attribute name="menu" value="/WEB-INF/views/template/default/menu.jsp"/>		
+		<put-attribute name="footer" value="/WEB-INF/views/template/default/footer.jsp"/>		
 	</definition>
 		
 	<definition name="*.tiles" extends="default">
 		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>
 	</definition>
-	<!--
 	<definition name="/*/*.tiles" extends="default">
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	<definition name="/*/*/*.tiles" extends="default">
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
 	</definition>
-	-->
-	
 	
 	<!-- tiles not apply -->
-	<definition name="noTiles" template="/WEB-INF/template/noTemplate.jsp">
-		<put-attribute name="noTemplate" value=""/>		
-	</definition>
-		
 	<definition name="*.jsp" extends="noTiles">
 		<put-attribute name="noTemplate" value="/WEB-INF/views/{1}.jsp"/>
 	</definition>
-	<!--
 	<definition name="/*/*.jsp" extends="noTiles">
 		<put-attribute name="noTemplate" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	<definition name="/*/*/*.jsp" extends="noTiles">
 		<put-attribute name="noTemplate" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
 	</definition>
-	-->
+	<definition name="noTiles" template="/WEB-INF/views/template/noTemplate.jsp">
+		<put-attribute name="noTemplate" value=""/>		
+	</definition>
+		
 </tiles-definitions>
