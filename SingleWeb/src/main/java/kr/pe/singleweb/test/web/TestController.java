@@ -1,4 +1,4 @@
-package kr.pe.singleweb;
+package kr.pe.singleweb.test.web;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -6,8 +6,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import kr.pe.singleweb.test.service.TestService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,12 +22,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = "/")
-public class HomeController
+public class TestController
 {
 	/**
 	 * logger : logger instance generation.
 	 */
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+
+	@Autowired
+	private TestService testService;
 
 	/**
 	 * @param locale
@@ -57,7 +63,7 @@ public class HomeController
 	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 12. 11.
 	 */
-	@RequestMapping(value = "test.do")
+	@RequestMapping(value = "testJson.do")
 	@ResponseBody
 	public ModelMap testJson()
 	{
@@ -78,4 +84,16 @@ public class HomeController
 		return modelMap;
 	}
 
+	@RequestMapping(value = "testDao.do")
+	@ResponseBody
+	public ModelMap testDao()
+	{
+		logger.debug("testDao Test");
+
+		ModelMap modelMap = new ModelMap();
+		modelMap.addAttribute("testString", "testString");
+		modelMap.addAttribute("testServiceMap", testService.selectTestValue());
+
+		return modelMap;
+	}
 }
