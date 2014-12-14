@@ -1,7 +1,7 @@
 /*
  * 라이센스 위치
  */
-package kr.pe.singleweb.intro.web;
+package kr.pe.singleweb.intr.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @since 2014. 12. 14.
  */
 @Controller
-@RequestMapping(value = "/intro")
+@RequestMapping(value = "/intr")
 public class IntroController
 {
 	private static final Logger logger = LoggerFactory.getLogger(IntroController.class);
@@ -30,6 +30,6 @@ public class IntroController
 	public String goIntro()
 	{
 		logger.debug("goIntro");
-		return "/intro/intro.tiles";
+		return "/intr/intr.tiles";
 	}
 }
