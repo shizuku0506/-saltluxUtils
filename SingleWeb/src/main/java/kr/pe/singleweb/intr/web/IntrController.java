@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping(value = "/intr")
-public class IntroController
+public class IntrController
 {
-	private static final Logger logger = LoggerFactory.getLogger(IntroController.class);
+	private static final Logger logger = LoggerFactory.getLogger(IntrController.class);
 
 	/**
 	 * intro 페이지 호출
