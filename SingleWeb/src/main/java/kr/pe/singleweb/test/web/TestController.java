@@ -27,7 +27,7 @@ public class TestController
 	/**
 	 * logger : logger instance generation.
 	 */
-	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+	private final Logger logger = LoggerFactory.getLogger(TestController.class);
 
 	@Autowired
 	private TestService testService;

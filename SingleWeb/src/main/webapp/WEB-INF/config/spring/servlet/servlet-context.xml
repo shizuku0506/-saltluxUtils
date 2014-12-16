@@ -33,4 +33,9 @@
 	<!-- jackson -->
 	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
 	
+	<!-- interceptor -->
+	<mvc:interceptors>
+			<bean class="kr.pe.singleweb.cmm.LoginInterceptor"/>
+	</mvc:interceptors>
+	
 </beans>
