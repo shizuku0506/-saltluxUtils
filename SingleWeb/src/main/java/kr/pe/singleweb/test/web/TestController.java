@@ -27,7 +27,7 @@ public class TestController
 	/**
 	 * logger : logger instance generation.
 	 */
-	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+	private final Logger logger = LoggerFactory.getLogger(TestController.class);
 
 	@Autowired
 	private TestService testService;
@@ -45,8 +45,6 @@ public class TestController
 	@RequestMapping(value = "index.do")
 	public String home(Locale locale, Model model)
 	{
-		logger.debug("Welcome home! The client locale is {}.", locale);
-
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 

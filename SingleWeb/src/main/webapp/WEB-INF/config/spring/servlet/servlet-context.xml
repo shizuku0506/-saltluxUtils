@@ -31,6 +31,19 @@
 	</bean>
 	
 	<!-- jackson -->
+	<!-- Configure to plugin JSON as request and response in method handler -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="jacksonMessageConverter"/>
+            </list>
+        </property>
+    </bean>
 	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+	
+	<!-- interceptor -->
+	<mvc:interceptors>
+			<bean class="kr.pe.singleweb.cmm.LoginInterceptor"/>
+	</mvc:interceptors>
 	
 </beans>

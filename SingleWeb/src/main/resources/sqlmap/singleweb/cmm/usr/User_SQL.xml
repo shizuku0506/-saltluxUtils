@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<select id="selectUserInfo" resultType="kr.pe.singleweb.cmm.usr.model.UserVO"
+		parameterType="kr.pe.singleweb.cmm.usr.model.UserVO">
+		SELECT
+		SEQ AS seq
+		,USER_ID AS userId
+		,USER_NM AS userName
+		,USER_PASSWORD
+		AS userPassword
+		,USER_PHONE AS userPhone
+		,USER_EMAIL AS userEmail
+		,ROLL_CD AS rollCode
+		,CREATE_DT AS createDate
+		,UPDATE_DT AS updateDate
+		,DELETE_YN AS deleteYn
+		FROM TB_USER
+		WHERE 1=1
+		<if test="userId != null and userId != '' ">
+			AND USER_ID = #{userId}
+		</if>
+		<if test="userName != null and userName != '' ">
+			AND USER_NM = #{userName}
+		</if>
+		<if test="userPassword != null and userPassword != '' ">
+			AND USER_PASSWORD = #{userPassword}
+		</if>
+		<if test="userPhone != null and userPhone != '' ">
+			AND USER_PHONE = #{userPhone}
+		</if>
+		<if test="userEmail != null and userEmail != '' ">
+			AND USER_EMAIL= #{userEmail}
+		</if>
+	</select>
+
+	<select id="countUser" resultType="Int"
+		parameterType="kr.pe.singleweb.cmm.usr.model.UserVO">
+		SELECT
+		COUNT(SEQ)
+		FROM TB_USER
+		WHERE 1=1
+		<if test="userId != null">
+			AND USER_ID = #{userId}
+		</if>
+	</select>
+
+	<insert id="insertUserInfo" parameterType="kr.pe.singleweb.cmm.usr.model.UserVO">
+		INSERT
+		INTO TB_USER
+		(
+		SEQ
+		,USER_ID
+		,USER_NM
+		,USER_PASSWORD
+		,USER_PHONE
+		,USER_EMAIL
+		,CREATE_DT
+		,UPDATE_DT
+		,DELETE_YN
+		)
+		VALUES
+		(
+		SQ_USER_01.NEXTVAL ,
+		#{userId} ,
+		#{userName} ,
+		#{userPassword} ,
+		#{userPhone} ,
+		#{userEmail},
+		SYSDATE ,
+		SYSDATE ,
+		'Y'
+		)
+	</insert>
+
+</mapper>
