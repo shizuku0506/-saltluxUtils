@@ -5,7 +5,7 @@
 	<a href="/intr/index.do">Intro</a>
 </p>
 <p>
-	<a href="#">Image BBS</a>
+	<a href="/imgbbs/imgbbsList.do">Image BBS</a>
 </p>
 <p>
 	<a href="#">Guest Book</a>

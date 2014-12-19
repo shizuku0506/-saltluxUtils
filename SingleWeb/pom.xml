@@ -18,12 +18,10 @@
 		<com.oracle-version>11.2.0.1.0</com.oracle-version>
 		<org.mybatis-version>3.2.8</org.mybatis-version>
 		<org.mybatis-spring-version>1.2.2</org.mybatis-spring-version>
-		<!-- 
-		<org.apache.tomcat-version>8.0.15</org.apache.tomcat-version>
-		 -->
-		 <org.apache.tomcat-version>7.0.57</org.apache.tomcat-version>
+		<org.apache.tomcat-version>7.0.57</org.apache.tomcat-version>
 		<org.apache.tiles-version>2.2.2</org.apache.tiles-version>
 		<org.codehaus.jackson-version>1.9.13</org.codehaus.jackson-version>
+		<atg.taglib.json-version>0.4.1</atg.taglib.json-version>
 		
 		<!-- build encoding to UTF-8 setting -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,9 +32,16 @@
 	</properties>
 	
 	<repositories>
+		<!-- Oracle repository -->
 		<repository>
 			<id>oracle</id>
 			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+		</repository>
+		
+		<!-- json-taglib repository -->
+		<repository>
+			<id>public</id>
+			<url>http://maven.nuxeo.org/nexus/content/repositories/public/</url>
 		</repository>
 	</repositories>
 	
@@ -231,7 +236,12 @@
 		</dependency>
 		 -->
 		
-		
+		<!-- json-taglib -->
+		<dependency>
+			<groupId>atg.taglib.json</groupId>
+			<artifactId>json-taglib</artifactId>
+			<version>${atg.taglib.json-version}</version>
+		</dependency>
 	</dependencies>
     
     <build>

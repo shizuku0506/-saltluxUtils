@@ -4,7 +4,17 @@
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
+	<!-- Value Object Setting -->
+	<typeAliases>
+		<typeAlias type="kr.pe.singleweb.imgbbs.model.ImgBbsVO" alias="imgBbs"/>
+		<typeAlias type="kr.pe.singleweb.imgbbs.model.ImgBbsFileVO" alias="imgBbsFile"/>
+	</typeAliases>
+	
+	<!-- SQL Mapper Setting -->
 	<mappers>
+		<mapper resource="/sqlmap/singleweb/test/testSqlMapper.xml"/>
 		<mapper resource="/sqlmap/singleweb/cmm/usr/User_SQL.xml"/>
+		<mapper resource="/sqlmap/singleweb/imgbbs/imgBbsSqlMapper.xml"/>
 	</mappers>
 </configuration>

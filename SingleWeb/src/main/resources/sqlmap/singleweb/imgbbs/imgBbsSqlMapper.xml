@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이미지 게시판 SQL Query. -->
+<mapper namespace="imgBbsSqlMapper">
+	
+	<resultMap type="imgBbs" id="imgBbsTable01">
+		<id property="idx" column="idx"/>
+		<result property="subject" column="subject"/>
+		<result property="writer" column="writer"/>
+		<result property="content" column="content"/>
+		<result property="regTimestamp" column="reg_ts"/>
+		<result property="modTimestamp" column="mod_ts"/>
+		<result property="hit" column="hit"/>
+		<result property="ip" column="ip"/>
+		<collection property="imgBbsFileList" resultMap="imgBbsFileTable01" ofType="imgBbsFile" javaType="java.util.ArrayList"/>
+	</resultMap>
+	
+	<resultMap type="imgBbsFile" id="imgBbsFileTable01">
+		<id property="fileIdx" column="file_idx"/>
+		<id property="idx" column="idx"/>
+		<result property="regDate" column="reg_dt"/>
+		<result property="fileSize" column="file_size"/>
+		<result property="fileName" column="file_nm"/>
+		<result property="fileType" column="file_type"/>
+		<result property="tempFileName" column="temp_file_nm"/>
+		<result property="deleteYn" column="delete_yn"/>
+	</resultMap>
+	
+	<select id="selectImgBbsList" resultMap="imgBbsTable01" parameterType="java.util.Map">
+		SELECT idx, subject, writer, content,
+			   reg_ts, mod_ts, hit, ip,
+			   file_idx, reg_dt, file_size, file_nm,
+			   file_type, temp_file_nm, delete_yn
+		FROM(
+			SELECT	a.idx, a.subject, a.writer, a.content,
+					a.reg_ts, a.mod_ts, a.hit, a.ip,
+					b.file_idx, b.reg_dt, b.file_size, b.file_nm,
+					b.file_type, b.temp_file_nm, b.delete_yn,
+					ROWNUM AS rnum
+			FROM	TB_IMG_BBS a 
+			LEFT JOIN	TB_IMG_BBS_FILE b
+			ON	a.idx = b.idx
+			ORDER BY a.idx DESC
+		)
+		WHERE rnum BETWEEN #{firstRow} AND #{lastRow}
+	</select>
+	
+	<select id="getTotalCnt" resultType="java.lang.Integer">
+		SELECT COUNT(idx) AS cnt
+		FROM TB_IMG_BBS
+	</select>
+	
+</mapper>

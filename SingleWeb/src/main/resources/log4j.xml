@@ -24,7 +24,7 @@
     </appender>
 	
 	<!-- Application Loggers -->
-	<logger name="kr.pe.testWeb">
+	<logger name="kr.pe.singleweb">
 		<level value="info" />
 	</logger>
 	
