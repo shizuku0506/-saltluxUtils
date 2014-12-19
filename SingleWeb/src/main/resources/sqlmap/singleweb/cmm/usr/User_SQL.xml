@@ -5,9 +5,32 @@
 
 <mapper namespace="user">
 
-	<select id="selectUserInfo" resultType="kr.pe.singleweb.cmm.usr.model.UserVO"
-		parameterType="String" >
-		SELECT '' AS USER_ID FROM DUAL
+	<select id="selectUserInfo" resultType="kr.pe.singleweb.cmm.usr.model.UserVO" parameterType="kr.pe.singleweb.cmm.usr.model.UserVO" >
+		SELECT
+		SEQ AS seq
+		,USER_ID AS userId
+		,USER_NM AS userName
+		,USER_PASSWORD AS userPassword
+		,USER_PHONE AS userPhone
+		,USER_EMAIL AS userEmail
+		,ROLL_CD AS rollCode
+		,CREATE_DT AS createDate
+		,UPDATE_DT AS updateDate
+		,DELETE_YN  AS deleteYn
+		FROM TB_USER
+		WHERE 1=1
+		<if test="userId != null">
+			AND USER_ID = #{userId}
+		</if>
 	</select>
-
+	
+	<select id="countUser" resultType="Int" parameterType="kr.pe.singleweb.cmm.usr.model.UserVO" >
+		SELECT
+			COUNT(SEQ)
+		FROM TB_USER
+		WHERE 1=1
+		<if test="userId != null">
+			AND USER_ID = #{userId}
+		</if>
+	</select>
 </mapper>

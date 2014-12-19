@@ -3,7 +3,10 @@
  */
 package kr.pe.singleweb.cmm.usr.service;
 
-import kr.pe.singleweb.cmm.usr.dao.UserDAO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import kr.pe.singleweb.cmm.usr.model.UserVO;
 
 import org.apache.commons.lang.StringUtils;
@@ -18,24 +21,51 @@ import org.springframework.stereotype.Service;
 @Service(value = "sessionService")
 public class SessionServiceImpl implements SessionService
 {
-	private UserDAO userDAO;
 
-	public UserVO getUserSession()
+	@Override
+	public String getSessionUserId(HttpServletRequest request, HttpServletResponse response)
 	{
-		UserVO userVO =  new UserVO();
-		
-		// TODO
-		try{
-			userVO  = userDAO.getUserInfo();
-		}catch(Exception e ){
-		}
-
-		if (StringUtils.isBlank(userVO.getUserId()) == true)
+		String userId = StringUtils.EMPTY;
+		try
 		{
-			userVO.setUserId("guest");
-			userVO.setUserName("게스트");
+			HttpSession session = request.getSession();
+			UserVO userVO = (UserVO) session.getAttribute("userVO");
+			userId = userVO.getUserId();
+		} catch (Exception e)
+		{
+			// skip
 		}
+		return userId;
+	}
 
+	@Override
+	public String getSessionUserName(HttpServletRequest request, HttpServletResponse response)
+	{
+		String userName = StringUtils.EMPTY;
+		try
+		{
+			HttpSession session = request.getSession();
+			UserVO userVO = (UserVO) session.getAttribute("userVO");
+			userName = userVO.getUserName();
+		} catch (Exception e)
+		{
+			// skip
+		}
+		return userName;
+	}
+
+	@Override
+	public UserVO getSessionUserInfo(HttpServletRequest request, HttpServletResponse response)
+	{
+		UserVO userVO = new UserVO();
+		try
+		{
+			HttpSession session = request.getSession();
+			userVO = (UserVO) session.getAttribute("userVO");
+		} catch (Exception e)
+		{
+			// skip
+		}
 		return userVO;
-	};
+	}
 }

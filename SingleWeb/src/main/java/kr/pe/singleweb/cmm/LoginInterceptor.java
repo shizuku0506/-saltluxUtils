@@ -34,28 +34,30 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 		logger.debug("[LoginInterceptor] preHandle");
 
 		HttpSession session = request.getSession();
+
 		UserVO userVO = new UserVO();
 
 		if (session == null)
 		{
-			userVO = sessionService.getUserSession();
+			userVO = this.defaltUserSession(userVO);
 		} else
 		{
 			if (session.getAttribute("userVO") == null)
 			{
-				userVO = sessionService.getUserSession();
+				userVO = this.defaltUserSession(userVO);
 			} else
 			{
 				if (session.getAttribute("userVO") instanceof UserVO)
 				{
 					userVO = (UserVO) session.getAttribute("userVO");
-					if (StringUtils.equalsIgnoreCase(userVO.getUserId(), "guest"))
+					if (StringUtils.equalsIgnoreCase(userVO.getUserId(), "guest")
+									|| StringUtils.equalsIgnoreCase(userVO.getUserId(), StringUtils.EMPTY))
 					{
-						userVO = sessionService.getUserSession();
+						userVO = this.defaltUserSession(userVO);
 					}
 				} else
 				{
-					userVO = sessionService.getUserSession();
+					userVO = this.defaltUserSession(userVO);
 				}
 			}
 		}
@@ -99,5 +101,20 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	/**
+	 * 세션에 기본값을 넣어준다
+	 * 
+	 * 기본값 : guest // 게스트
+	 *
+	 * @author 박정선 e-mail: souler2585@gmail.com
+	 * @since 2014. 12. 18.
+	 */
+	private UserVO defaltUserSession(UserVO userVO)
+	{
+		userVO.setUserId("guest");
+		userVO.setUserName("게스트");
+		return userVO;
 	}
 }

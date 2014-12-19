@@ -45,8 +45,6 @@ public class TestController
 	@RequestMapping(value = "index.do")
 	public String home(Locale locale, Model model)
 	{
-		logger.debug("Welcome home! The client locale is {}.", locale);
-
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
