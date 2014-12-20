@@ -15,6 +15,6 @@
 	<mappers>
 		<mapper resource="/sqlmap/singleweb/test/testSqlMapper.xml"/>
 		<mapper resource="/sqlmap/singleweb/cmm/usr/User_SQL.xml"/>
-		<mapper resource="/sqlmap/singleweb/imgbbs/imgBbsSqlMapper.xml"/>
+		<mapper resource="/sqlmap/singleweb/imgbbs/ImgBbs_SQL.xml"/>
 	</mappers>
 </configuration>

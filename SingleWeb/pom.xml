@@ -39,10 +39,12 @@
 		</repository>
 		
 		<!-- json-taglib repository -->
+		<!--
 		<repository>
 			<id>public</id>
 			<url>http://maven.nuxeo.org/nexus/content/repositories/public/</url>
 		</repository>
+		-->
 	</repositories>
 	
 	<dependencies>
@@ -237,11 +239,13 @@
 		 -->
 		
 		<!-- json-taglib -->
+		<!--
 		<dependency>
 			<groupId>atg.taglib.json</groupId>
 			<artifactId>json-taglib</artifactId>
 			<version>${atg.taglib.json-version}</version>
 		</dependency>
+		-->
 	</dependencies>
     
     <build>
