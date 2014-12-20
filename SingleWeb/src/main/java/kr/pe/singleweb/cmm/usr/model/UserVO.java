@@ -23,7 +23,7 @@ public class UserVO
 
 	private String userPhone = StringUtils.EMPTY;
 
-	private String userMail = StringUtils.EMPTY;
+	private String userEmail = StringUtils.EMPTY;
 
 	private String rollCode = StringUtils.EMPTY;
 
@@ -83,14 +83,14 @@ public class UserVO
 		this.userPhone = userPhone;
 	}
 
-	public String getUserMail()
+	public String getUserEmail()
 	{
-		return userMail;
+		return userEmail;
 	}
 
-	public void setUserMail(String userMail)
+	public void setUserEmail(String userEmail)
 	{
-		this.userMail = userMail;
+		this.userEmail = userEmail;
 	}
 
 	public String getRollCode()

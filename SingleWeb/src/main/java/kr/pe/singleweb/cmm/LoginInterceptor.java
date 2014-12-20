@@ -31,8 +31,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 	 */
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception
 	{
-		logger.debug("[LoginInterceptor] preHandle");
-
 		HttpSession session = request.getSession();
 
 		UserVO userVO = new UserVO();
@@ -62,7 +60,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 			}
 		}
 
-		logger.debug("[current User Id ] " + userVO.getUserId());
+		logger.debug("[current Session User Id ] " + userVO.getUserId());
 
 		session.setAttribute("userVO", userVO);
 
@@ -115,6 +113,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 	{
 		userVO.setUserId("guest");
 		userVO.setUserName("게스트");
+		userVO.setRollCode("ROLL_001");
 		return userVO;
 	}
 }

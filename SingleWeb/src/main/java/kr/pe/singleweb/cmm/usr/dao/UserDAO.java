@@ -1,5 +1,7 @@
 package kr.pe.singleweb.cmm.usr.dao;
 
+import java.util.List;
+
 import kr.pe.singleweb.cmm.usr.model.UserVO;
 
 import org.apache.commons.lang.StringUtils;
@@ -13,10 +15,9 @@ public class UserDAO
 	@Autowired
 	private SqlSession sqlSession;
 
-	@Deprecated
-	public UserVO getUserInfo(UserVO userVO)
+	public List<UserVO> selectUserInfoList(UserVO userVO)
 	{
-		return sqlSession.selectOne("user.selectUserInfo", null);
+		return sqlSession.selectList("user.selectUserInfo", userVO);
 	}
 
 	public int isLogin(UserVO userVO)
@@ -27,6 +28,11 @@ public class UserDAO
 			return 0;
 		}
 		return sqlSession.selectOne("user.countUser", userVO);
+	}
+
+	public int insertUserInfo(UserVO userVO)
+	{
+		return sqlSession.insert("user.insertUserInfo", userVO);
 	}
 
 }

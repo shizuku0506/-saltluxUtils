@@ -22,7 +22,18 @@ if(StringUtils.equals(userId, StringUtils.EMPTY) || StringUtils.equals(userId, "
 	}else
 	{
 %>
-<a href="/usr/doLogout.do">loginOut</a>&nbsp;|&nbsp;
+	[&nbsp;<%=userVO.getUserId() %>&nbsp;]&nbsp;환영합니다.&nbsp;
+	<a href="/usr/doLogout.do">loginOut</a>&nbsp;|&nbsp;
+	
+	<%
+	if(userVO.getRollCode().equals("ROLL_000"))
+	{
+	%>
+	<a href="/admin/admin.do">관리자&nbsp;페이지</a>&nbsp;|&nbsp;
+	<%	
+	}
+	%>
+
 <%		
 	}
 %>

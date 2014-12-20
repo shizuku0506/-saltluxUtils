@@ -1,5 +1,8 @@
 package kr.pe.singleweb.cmm.usr.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import kr.pe.singleweb.cmm.usr.dao.UserDAO;
 import kr.pe.singleweb.cmm.usr.model.UserVO;
 
@@ -13,27 +16,31 @@ public class UserServiceImpl implements UserService
 	private UserDAO userDAO;
 
 	@Override
-	public UserVO getUserInfo(UserVO userVO)
+	public List<UserVO> getUserInfo(UserVO userVO)
 	{
+		List<UserVO> resultList = new ArrayList<UserVO>();
 		try
 		{
-			userVO = userDAO.getUserInfo(userVO);
+			resultList = userDAO.selectUserInfoList(userVO);
 		} catch (Exception e)
 		{
 		}
-		return userVO;
+		return resultList;
 	}
 
+	/**
+	 * login 체크
+	 *
+	 * @author 박정선 e-mail: souler2585@gmail.com
+	 * @since 2014. 12. 19.
+	 */
 	@Override
 	public boolean isLogin(UserVO userVO)
 	{
 		boolean b = false;
-		int cnt = 0;
 		try
 		{
-			cnt = userDAO.isLogin(userVO);
-
-			if (cnt > 0)
+			if (userDAO.isLogin(userVO) > 0)
 			{
 				b = true;
 			}
@@ -44,11 +51,28 @@ public class UserServiceImpl implements UserService
 		return b;
 	}
 
+	/**
+	 * 회원가입
+	 *
+	 * @author 박정선 e-mail: souler2585@gmail.com
+	 * @since 2014. 12. 19.
+	 */
 	@Override
 	public boolean addUserInfo(UserVO userVO)
 	{
-		// TODO
-		return false;
+		boolean b = false;
+		try
+		{
+			if (userDAO.insertUserInfo(userVO) > 0)
+			{
+				b = true;
+			}
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return b;
 	}
 
 }

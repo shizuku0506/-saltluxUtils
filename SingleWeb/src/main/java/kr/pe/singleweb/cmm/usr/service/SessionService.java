@@ -10,6 +10,6 @@ public interface SessionService
 	public String getSessionUserId(HttpServletRequest request, HttpServletResponse response);
 
 	public String getSessionUserName(HttpServletRequest request, HttpServletResponse response);
-
+	
 	public UserVO getSessionUserInfo(HttpServletRequest request, HttpServletResponse response);
 }

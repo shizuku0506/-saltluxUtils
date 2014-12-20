@@ -1,5 +1,7 @@
 package kr.pe.singleweb.cmm.usr.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -60,7 +62,7 @@ public class UserController
 	}
 
 	/**
-	 * 로그인
+	 * 로그인 로직
 	 *
 	 * @author 박정선 e-mail: souler2585@gmail.com
 	 * @since 2014. 12. 18.
@@ -76,12 +78,19 @@ public class UserController
 		boolean isLogin = userService.isLogin(userVO);
 
 		map.addAttribute("isLogin", isLogin);
-		map.addAttribute("userVO", userVO);
 
 		if (isLogin == true)
 		{
+			List<UserVO> resultList = userService.getUserInfo(userVO);
+			if (resultList.size() == 1)
+			{
+				userVO = resultList.get(0);
+			}
 			session.setAttribute("userVO", userVO);
 		}
+		
+		map.addAttribute("userVO", userVO);
+		
 		return map;
 	}
 
@@ -102,6 +111,13 @@ public class UserController
 		return "forward:/index.do";
 	}
 
+	/**
+	 * 회원가입 페이지
+	 * 
+	 *
+	 * @author 박정선 e-mail: souler2585@gmail.com
+	 * @since 2014. 12. 19.
+	 */
 	@RequestMapping(value = "join.do")
 	public ModelAndView goJoin(@ModelAttribute UserVO userVO, HttpServletRequest request, HttpServletResponse response)
 	{
@@ -110,11 +126,74 @@ public class UserController
 		return mav;
 	}
 
+	/**
+	 * 회원가입 로직
+	 * 
+	 * @author 박정선 e-mail: souler2585@gmail.com
+	 * @since 2014. 12. 19.
+	 */
 	@RequestMapping(value = "doJoin.do")
+	@ResponseBody
 	public ModelMap doJoin(@ModelAttribute UserVO userVO, HttpServletRequest request, HttpServletResponse response)
 	{
 		ModelMap map = new ModelMap();
+		HttpSession session = request.getSession();
+
 		boolean isSuccess = userService.addUserInfo(userVO);
+		
+		List<UserVO> resultList = userService.getUserInfo(userVO);
+		int duplicateCount = resultList.size();
+
+		if (isSuccess == true)
+		{
+			session.setAttribute("userVO", userVO);
+		}
+		map.addAttribute("isSuccess", isSuccess);
+		map.addAttribute("duplicateCount", duplicateCount);
+		return map;
+	}
+
+	/**
+	 * 아이디/비밀번호 찾기 페이지
+	 *
+	 * @author 박정선 e-mail: souler2585@gmail.com
+	 * @since 2014. 12. 19.
+	 */
+	@RequestMapping(value = "findUserInfo.do")
+	public ModelAndView goFindUserInfo(@ModelAttribute UserVO userVO, HttpServletRequest request,
+					HttpServletResponse response)
+	{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/usr/findUserInfo.tiles");
+		return mav;
+	}
+
+	/**
+	 * 아이디/비밀번호 찾기 로직
+	 *
+	 * @author 박정선 e-mail: souler2585@gmail.com
+	 * @since 2014. 12. 19.
+	 */
+	@RequestMapping(value = "doFindUserInfo.do")
+	@ResponseBody
+	public ModelMap doFindUserInfo(@ModelAttribute UserVO userVO, HttpServletRequest request,
+					HttpServletResponse response)
+	{
+		ModelMap map = new ModelMap();
+		boolean isSuccess = false;
+		List<UserVO> resultList = userService.getUserInfo(userVO);
+
+		if (resultList.size() == 1)
+		{
+			isSuccess = true;
+			userVO = resultList.get(0);
+		} else
+		{
+			userVO = new UserVO();
+		}
+
+		map.addAttribute("isSuccess", isSuccess);
+		map.addAttribute("userVO", userVO);
 		return map;
 	}
 }
