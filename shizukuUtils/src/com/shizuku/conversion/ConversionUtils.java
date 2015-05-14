@@ -4,21 +4,6 @@ import org.apache.commons.lang.StringUtils;
 
 public class ConversionUtils
 {
-
-	public static void main(String[] args)
-	{
-		String eng = "gksrmfdl wkfskdhsi??";
-		String kor = "한글이 잘나오고있을거야....";
-
-		eng = "f";
-		kor = "ㅋㅌㅊㅍ";
-
-		ConversionUtils cu = new ConversionUtils();
-
-		System.out.println("@@" + cu.converisonEngToKor(eng));
-		// System.out.println("@@" + cu.converisonKorToEng(kor));
-	}
-
 	public String checkFirstCharecterType(String str)
 	{
 		String typeStr = StringUtils.EMPTY;
@@ -52,7 +37,7 @@ public class ConversionUtils
 		return typeStr;
 	}
 
-	public String converisonEngToKor(String eng)
+	public String conversionEngToKor(String eng)
 	{
 		String result = StringUtils.EMPTY;
 
@@ -68,7 +53,7 @@ public class ConversionUtils
 		return result;
 	}
 
-	public String converisonKorToEng(String kor)
+	public String conversionKorToEng(String kor)
 	{
 		String result = StringUtils.EMPTY;
 

@@ -33,7 +33,7 @@ public class HostTest
 		hostName = "www.google.co.kr";
 	}
 
-	@Test
+	// @Test
 	public void test()
 	{
 		boolean isSuccess = false;

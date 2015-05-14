@@ -14,19 +14,8 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 
 public class Compressor
 {
-	private final int BUF_SIZE = 1024 * 8;
-
-	public static void main(String[] args)
-	{
-		Compressor c = new Compressor();
-		try
-		{
-			c.compressZIP(new File("d:\\test\\vva\\"), new File("d:\\test\\a.zip"), "UTF-8", false);
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+	// 1024 * 8
+	private final int BUF_SIZE = 8192;
 
 	/**
 	 * @param srcFile
@@ -88,9 +77,12 @@ public class Compressor
 				for (int i = 0; i < fs.length; i++)
 				{
 					if (fs[i].isDirectory())
+					{
 						stack.push(fs[i]);
-					else
+					} else
+					{
 						stack.add(0, fs[i]);
+					}
 				}
 			} else
 			{
@@ -158,9 +150,12 @@ public class Compressor
 				for (int i = 0; i < fs.length; i++)
 				{
 					if (fs[i].isDirectory())
+					{
 						stack.push(fs[i]);
-					else
+					} else
+					{
 						stack.add(0, fs[i]);
+					}
 				}
 			} else
 			{
@@ -229,9 +224,12 @@ public class Compressor
 				for (int i = 0; i < fs.length; i++)
 				{
 					if (fs[i].isDirectory())
+					{
 						stack.push(fs[i]);
-					else
+					} else
+					{
 						stack.add(0, fs[i]);
+					}
 				}
 			} else
 			{
@@ -259,9 +257,13 @@ public class Compressor
 		String path = dir.getAbsolutePath();
 		path = path.substring(root.getAbsolutePath().length()).replace(File.separatorChar, '/');
 		if (path.startsWith("/"))
+		{
 			path = path.substring(1);
+		}
 		if (dir.isDirectory() && !path.endsWith("/"))
+		{
 			path += "/";
+		}
 		return path;
 	}
 }

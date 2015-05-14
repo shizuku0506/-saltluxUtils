@@ -12,14 +12,14 @@ public class CompressUtils
 
 	private UnCompressor unCompressor;
 
-	private final String extensionZIP = "zip";
+	private final String EXTENSION_ZIP = "zip";
 
-	private final String extensionTAR = "tar";
+	private final String EXTENSION_TAR = "tar";
 
 	// private final String extensionBZIP = "bz2"; // .tar.bz2
 	// private final String extensionGZIP = "gz"; // .tar.gz
 
-	private final String extensionSEVENZIP = "7z";
+	private final String EXTENSION_SEVENZIP = "7z";
 
 	public CompressUtils()
 	{
@@ -59,15 +59,15 @@ public class CompressUtils
 
 		try
 		{
-			if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()), extensionZIP))
+			if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()), EXTENSION_ZIP))
 			{
 				unCompressor.unCompressZIP(srcFile, destFile, encoding);
 			} else if (StringUtils
-							.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()), extensionTAR))
+							.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()), EXTENSION_TAR))
 			{
 				unCompressor.unCompressTAR(srcFile, destFile, encoding);
 			} else if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(srcFile.getAbsolutePath()),
-							extensionSEVENZIP))
+							EXTENSION_SEVENZIP))
 			{
 				unCompressor.unCompressSEVENZIP(srcFile, destFile, encoding);
 			}
@@ -109,16 +109,16 @@ public class CompressUtils
 
 		try
 		{
-			if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(destFile.getAbsolutePath()), extensionZIP))
+			if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(destFile.getAbsolutePath()), EXTENSION_ZIP))
 			{
 				compressor.compressZIP(srcFile, destFile, encoding, includeSrc);
 			} else if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(destFile.getAbsolutePath()),
-							extensionTAR))
+							EXTENSION_TAR))
 			{
 				// TODO
 				compressor.compressTAR(srcFile, destFile, encoding, includeSrc);
 			} else if (StringUtils.equalsIgnoreCase(FilenameUtils.getExtension(destFile.getAbsolutePath()),
-							extensionSEVENZIP))
+							EXTENSION_SEVENZIP))
 			{
 				// TODO
 				compressor.compressSEVENZIP(srcFile, destFile, encoding, includeSrc);
